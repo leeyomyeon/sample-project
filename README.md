@@ -1,3 +1,30 @@
+# Sample-Project (Self-Study)
+
+## 환경
+
+- Front
+    - JS Library : React
+    - Design : Bootstrap
+    - Middleware : redux-saga
+
+- BackEnd (추후 추가)
+
+## Dependencies
+    - react : 18.2.0
+    - bootstrap : 5.3.2
+    - axios : 1.6.2
+    - react-bootstrap : 2.9.1
+    - react-hook : 1.0.0
+    - react-hook-form : 7.49.0
+    - react-redux : 8.1.3
+    - react-router : 6.20.1
+    - react-router-dom : 6.20.1
+    - react-dom : 18.2.0
+    - redux-actions : 3.0.0
+    - redux-saga : 1.2.3
+    - redux-toolkit : 1.1.2
+
+```
 # Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
@@ -44,3 +71,4 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+```
