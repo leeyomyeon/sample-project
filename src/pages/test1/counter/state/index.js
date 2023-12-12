@@ -22,11 +22,11 @@ const reducers = {
             return { payload : {key, value} };
         }
     },
-    increase: (state, { payload }) => {
-        state.number += payload;
+    increase: (state, { payload : { data } }) => {
+        state.number += data;
     },
-    decrease: (state, { payload }) => {
-        state.number -= payload;
+    decrease: (state, { payload : { data } }) => {
+        state.number -= data;
     }
 }
 

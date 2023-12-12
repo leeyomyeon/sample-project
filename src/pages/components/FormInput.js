@@ -1,14 +1,14 @@
 import React from 'react';
 import { FormGroup, FormLabel, FormControl } from 'react-bootstrap';
 
-const FormInput = ({id, label, ...props}) => {
+const FormInput = ({id, label, register, ...props}) => {
     
     return (
         <FormGroup controlId={id}>
             <FormLabel>
                 {label}
             </FormLabel>
-            <FormControl {...props} />
+            <FormControl {...register(id)} {...props} />
         </FormGroup>
     )
 };
