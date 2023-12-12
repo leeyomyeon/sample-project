@@ -1,7 +1,7 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
 
 const ROOT_SLICE_NAME = 'test1';
-const SLICE_NAME = 'counter';
+const SLICE_NAME = 'sample';
 
 const initialState = {
     number: 0,
