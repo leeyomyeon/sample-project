@@ -4,16 +4,21 @@ const ROOT_SLICE_NAME = 'test1';
 const SLICE_NAME = 'counter';
 
 const initialState = {
+    onload: false,
     number: 0,
 }
 
 const sagaAction = {
-    increase : createAction(`${SLICE_NAME}/increase`),
-    decrease : createAction(`${SLICE_NAME}/decrease`),
+    fetchInitialInfo: createAction(`${SLICE_NAME}/fetchInitialInfo`),
+    getList: createAction(`${SLICE_NAME}/getList`),
 };
 
 const reducers = {
     initState: () => initialState,
+    setInitialInfo: (state) => {
+        state.onload = true;
+        state.number = 1;
+    },
     setValue: {
         reducer: (state, { payload : { key, value }}) => {
             state[key] = value;

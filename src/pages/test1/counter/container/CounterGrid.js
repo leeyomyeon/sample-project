@@ -29,6 +29,7 @@ const CounterGrid = () => {
     }, [watch]);
 
     const number = useSelector((state) => getState(state).number);
+    
     const inc = () => {
         dispatch(actions.increase({ data : Number(getValues().addNum) }));
     }
