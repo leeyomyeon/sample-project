@@ -9,3 +9,14 @@ const rootReducerTest1 = combineReducers({
 })
 
 export default rootReducerTest1;
+/*
+    combineReducers({
+        counter: {
+            createSlice({
+                name: SLICE_NAME,
+                initialState,
+                reducers,
+            });
+        }
+    })
+*/

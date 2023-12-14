@@ -8,3 +8,15 @@ export function* rootSaga() {
 }
 
 export default rootSaga;
+/*
+rootSaga() {
+    yield all([
+        rootSagaTest1: {
+            yield all([
+                takeLatest(actions.fetchInitialInfo, fetchInitialInfo),
+                takeLatest(actions.getList, getList),
+            ]);
+        },
+    ])
+}
+*/

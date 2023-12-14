@@ -5,3 +5,13 @@ export const rootSagaTest1 = [
     counter_WatchUnsplash(),
     // sample_WatchUnsplash(),
 ]
+/*
+rootSagaTest1 = [
+    {
+        yield all([
+            takeLatest(actions.fetchInitialInfo, fetchInitialInfo),
+            takeLatest(actions.getList, getList),
+        ]);
+    },
+]
+*/
