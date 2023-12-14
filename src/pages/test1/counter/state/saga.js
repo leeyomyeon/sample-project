@@ -1,7 +1,13 @@
-import { all, put, takeLatest } from 'redux-saga/effects';
+import { all, put, call, takeLatest } from 'redux-saga/effects';
 import { actions } from '.';
+import callApi from '../../../../lib/callApi';
 
 function* fetchInitialInfo() {
+    // yield call(callApi, {
+    //     url: '',
+    //     method: 'post',
+    //     data: {},
+    // });
     yield put(actions.setInitialInfo());
 }
 

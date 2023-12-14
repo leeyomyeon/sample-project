@@ -1,7 +1,10 @@
 import { rootSagaTest1 } from '../pages/test1/state/rootSaga';
+import { all } from 'redux-saga/effects';
 
-const rootSaga = [
-    ...rootSagaTest1,
-]
+export function* rootSaga() {
+    yield all([
+        ...rootSagaTest1,
+    ])
+}
 
 export default rootSaga;

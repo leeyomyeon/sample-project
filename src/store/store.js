@@ -2,22 +2,16 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 
+import { rootSaga } from './rootSaga';
+import { rootReducer } from './rootReducer';
+
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 middleware.push(logger);
 
-let reducers = null;
-let sagas = null;
-
-const createStore = async () => {
-    reducers = await import('./rootReducer').then((value) => combineReducers(value.default));
-    sagas = await import('./rootSaga').then((value) => combineReducers(value.default));
-    function* rootSaga() {
-        yield sagas;
-    }
-
+const createStore = () => {
     const store = configureStore({
-        reducer : reducers,
+        reducer : rootReducer,
         devTools : true,
         middleware: middleware,
     });
