@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import CounterPage from './pages/test1/counter/container/CounterPage';
-import SamplePage from './pages/test1/sample/container/SamplePage';
-import Home from './pages/components/Home';
-import Header from './pages/components/Header';
-import PageNotFound from './pages/components/PageNotFound';
+import CounterPage from 'pages/test1/counter/container/CounterPage';
+import SamplePage from 'pages/test1/sample/container/SamplePage';
+import Home from 'pages/components/Home';
+import Header from 'pages/components/Header';
+import PageNotFound from 'pages/components/PageNotFound';
 function App() {
     return (
         <div>

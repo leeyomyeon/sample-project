@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, getState } from '../state';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import FormInput from '../../../components/FormInput';
+import FormInput from 'pages/components/FormInput';
 import { useForm } from 'react-hook-form';
 
 const SamplePage = () => {

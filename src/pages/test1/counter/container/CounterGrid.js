@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, getState } from '../state';
 import { Form, Button, Table } from 'react-bootstrap';
-import FormInput from '../../../components/FormInput';
+import FormInput from 'pages/components/FormInput';
 import { useForm } from 'react-hook-form';
 
 const initialValues = {
