@@ -35,11 +35,13 @@ const CounterApiGrid = () => {
                     <FormInput
                         id="apiKey"
                         label="API Key"
+                        horizontal={true}
+                        labelSize={1}
                         register={register}
                     />
                 </Form>
             </div>
-            <div>
+            <div align='center'>
                 <Button onClick={onSubmit}>
                     조회
                 </Button>

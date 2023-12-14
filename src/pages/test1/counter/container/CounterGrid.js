@@ -51,6 +51,7 @@ const CounterGrid = () => {
                                 id="addNum"
                                 label="값 입력"
                                 register={register}
+                                horizontal={true}
                                 onChange={(e) => setFieldNum(e.target.value)}
                             />
                         </td>
