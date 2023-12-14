@@ -14,12 +14,14 @@ const CounterGrid = () => {
     const {
         register,
         getValues,
+        setValue,
         watch
     } = useForm({
         mode: "onTouched",
-        reValidateMode: "onSubmit",
+        reValidateMode: "onChange",
         defaultValues: initialValues
     })
+    const [validate, setValidate] = useState(false);
 
     useEffect(() => {
         const subscription = watch((value, { name, type }) => {
@@ -36,8 +38,25 @@ const CounterGrid = () => {
     const dec = () => {
         dispatch(actions.decrease({ data : Number(getValues().addNum) }));
     }
+    const onChange = (e) => {
+        const regex = /[^0-9]/g;
+        if(regex.test(e.target.value)) {
+            setValidate(true);
+            setTimeout(() => {
+                setValidate(false);
+            }, 2000)
+        }
+        const res = e.target.value.replace(regex,'');
+        setFieldNum(res);
+        setValue('addNum', res);
+    }
+    const onKeyDown = (e) => {
+        if(e.key === 'Enter') {
+            e.preventDefault();
+        }
+    }
     return (
-        <Form>
+        <Form onKeyDown={onKeyDown}>
             <Table striped bordered hover variant="dark">
                 <tbody>
                     <tr>
@@ -45,14 +64,15 @@ const CounterGrid = () => {
                             <h1>{number}</h1>
                         </td>
                     </tr>
-                    <tr>
+                    <tr style={{ height: '80px'}}>
                         <td colSpan={2}>
                             <FormInput
                                 id="addNum"
                                 label="값 입력"
                                 register={register}
                                 horizontal={true}
-                                onChange={(e) => setFieldNum(e.target.value)}
+                                onChange={onChange}
+                                isInvalid={validate}
                             />
                         </td>
                     </tr>

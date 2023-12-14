@@ -17,6 +17,9 @@ const FormInput = ({id, label, register, horizontal = false, labelSize = 2, ...p
                         </FormLabel>
                         <Col>
                             <FormControl {...register(id)} {...props} />
+                            <FormControl.Feedback type="invalid">
+                                숫자만 입력 할 수 있습니다.
+                            </FormControl.Feedback>
                         </Col>
                     </FormGroup>
             ) : (
@@ -25,6 +28,9 @@ const FormInput = ({id, label, register, horizontal = false, labelSize = 2, ...p
                         {label}
                     </FormLabel>
                     <FormControl {...register(id)} {...props} />
+                    <FormControl.Feedback type="invalid">
+                        숫자만 입력 할 수 있습니다.
+                    </FormControl.Feedback>
                 </FormGroup>
             )}            
         </>
