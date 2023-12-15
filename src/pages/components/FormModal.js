@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   Form, Button,
   Modal, ModalBody, ModalHeader, ModalTitle, ModalFooter } from 'react-bootstrap';
 import FormInput from './FormInput';
 import { useForm } from 'react-hook-form';
 
-const FormModal = (title, bodyText, callBackFnc, visible, onClose, ...props) => {
+const FormModal = ({title, bodyText, callBackFnc, visible, onClose}) => {
+  
+  useEffect(() => {
+    if(visible) {
+      
+    }
+  }, [visible]);
+
   const {
     register,
     getValues,
@@ -13,18 +20,24 @@ const FormModal = (title, bodyText, callBackFnc, visible, onClose, ...props) => 
     mode: "onTouched",
     reValidateMode: "onSubmit",
     defaultValues: ''
-  })
+  });
+
   return (
-    <Modal show={visible} onHide={onClose}>
+    <Modal 
+      show={visible} 
+      onHide={onClose}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
       <ModalHeader closeButton>
         <ModalTitle>{title}</ModalTitle>
       </ModalHeader>
       <ModalBody>
         <Form>
           <FormInput
-              id="modalValue"
-              label={bodyText}
-              register={register}
+            id="modalValue"
+            label={bodyText}
+            register={register}
           />
         </Form>
       </ModalBody>
@@ -40,5 +53,5 @@ const FormModal = (title, bodyText, callBackFnc, visible, onClose, ...props) => 
       </ModalFooter>
     </Modal>
   )
-}
+};
 export default FormModal;

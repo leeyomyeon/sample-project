@@ -6,6 +6,7 @@ import serviceWorker from './serviceWorker';
 import createStore from './store/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 

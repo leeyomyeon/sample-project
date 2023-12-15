@@ -34,8 +34,7 @@ const CounterApiGrid = () => {
   }, [watch]);
 
   const onButtonClick = () => {
-    console.log('open modal');
-    setModalVisible(true);
+    setModalVisible(!modalVisible);
   }
   const callBackModal = (value) => {
     setValue('apiKey', value);
@@ -64,27 +63,27 @@ const CounterApiGrid = () => {
         </div>
         <div align={'center'}>
           <Card style={{ width: '18rem' }}>
-            <CardImg variant="top" src={pakeWeekend} />
+            { modalVisible && (<CardImg variant="top" src={pakeWeekend} />) }
             <CardBody>
               <CardTitle>이미지 테스트</CardTitle>
               <CardText>
                 헐 벌써 주말이라니 거짓말같아. <br />
                 당연함.<br /> 거짓말임
               </CardText>
-              <Button variant="primary" onClick={onButtonClick}>모달</Button>
+              <div>
+                <Button variant="primary" onClick={onButtonClick}>모달</Button>
+              </div>
             </CardBody>
           </Card>
         </div>
-        { modalVisible && (
-          <FormModal
-            title="제목"
-            bodyText="내용"
-            callBackFnc={callBackModal}
-            onClose={onClose}
-            visible={modalVisible}
-          />)
-        }
       </Stack>
+      <FormModal
+        title="제목"
+        bodyText="내용"
+        callBackFnc={callBackModal}
+        visible={modalVisible}
+        onClose={onClose}
+      />
     </>
   )
 }
