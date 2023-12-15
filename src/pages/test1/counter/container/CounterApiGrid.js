@@ -77,13 +77,15 @@ const CounterApiGrid = () => {
           </Card>
         </div>
       </Stack>
-      <FormModal
-        title="제목"
-        bodyText="내용"
-        callBackFnc={callBackModal}
-        visible={modalVisible}
-        onClose={onClose}
-      />
+      {modalVisible && (
+        <FormModal
+          title="제목"
+          bodyText="내용"
+          callBackFnc={callBackModal}
+          visible={modalVisible}
+          onClose={onClose}
+        />
+      )}
     </>
   )
 }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actions, getState } from '../state';
 import CounterGrid from './CounterGrid';
 import CounterApiGrid from './CounterApiGrid';
+import CounterCarousel from './CounterCarousel';
 
 const CounterPage = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,10 @@ const CounterPage = () => {
             <Container>
               <Row>
                 <Col sm={8}>
-                    <CounterGrid />
+                  <CounterGrid />
                 </Col>
                 <Col sm={4}>
-
+                  <CounterCarousel />
                 </Col>
               </Row>
               <Row>
