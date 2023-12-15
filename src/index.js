@@ -12,13 +12,13 @@ const root = createRoot(container);
 const store = createStore();
 
 const render = () => {
-    root.render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </BrowserRouter>
-    );
+  root.render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  );
 }
 
 render();

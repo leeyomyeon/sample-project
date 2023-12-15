@@ -50,13 +50,9 @@ const CounterGrid = () => {
         setFieldNum(res);
         setValue('addNum', res);
     }
-    const onKeyDown = (e) => {
-        if(e.key === 'Enter') {
-            e.preventDefault();
-        }
-    }
+
     return (
-        <Form onKeyDown={onKeyDown}>
+        <Form>
             <Table striped bordered hover variant="dark">
                 <tbody>
                     <tr>

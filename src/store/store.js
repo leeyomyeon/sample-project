@@ -10,15 +10,15 @@ const middleware = [sagaMiddleware];
 middleware.push(logger);
 
 const createStore = () => {
-    const store = configureStore({
-        reducer : rootReducer,
-        devTools : true,
-        middleware: middleware,
-    });
+  const store = configureStore({
+    reducer : rootReducer,
+    devTools : true,
+    middleware: middleware,
+  });
 
-    sagaMiddleware.run(rootSaga);
+  sagaMiddleware.run(rootSaga);
 
-    return store;
+  return store;
 }
 
 export default createStore;

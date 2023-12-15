@@ -6,40 +6,40 @@ import CounterGrid from './CounterGrid';
 import CounterApiGrid from './CounterApiGrid';
 
 const CounterPage = () => {
-    const dispatch = useDispatch();
-    const onload = useSelector((state) => getState(state).onload);
+  const dispatch = useDispatch();
+  const onload = useSelector((state) => getState(state).onload);
 
-    useEffect(() => {
-        dispatch(actions.fetchInitialInfo());
+  useEffect(() => {
+    dispatch(actions.fetchInitialInfo());
 
-        return () => {
-            dispatch(actions.initState());
-        }
-    }, [dispatch]);
+    return () => {
+      dispatch(actions.initState());
+    }
+  }, [dispatch]);
 
-    return (
-        <>
-            {
-                onload && (
-                    <div>
-                    <Container>
-                        <Row>
-                            <Col sm={8}>
-                                <CounterGrid />
-                            </Col>
-                            <Col sm={4}>
-        
-                            </Col>
-                        </Row>
-                        <Row>
-                            <CounterApiGrid />
-                        </Row>
-                    </Container>
-                </div>
-                )
-            }
-        </>
-    )
+  return (
+    <>
+      {
+        onload && (
+          <div>
+            <Container>
+              <Row>
+                <Col sm={8}>
+                    <CounterGrid />
+                </Col>
+                <Col sm={4}>
+
+                </Col>
+              </Row>
+              <Row>
+                <CounterApiGrid />
+              </Row>
+            </Container>
+          </div>
+        )
+      }
+    </>
+  )
 }
 
 export default React.memo(CounterPage);
