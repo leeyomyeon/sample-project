@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormGroup, FormLabel, FormControl, Row, Col } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
 
-const FormInput = ({id, label, horizontal = false, labelSize = 2, useForm, ...props}) => {
+const FormInputNumber = ({id, label, horizontal = false, labelSize = 2, useForm, ...props}) => {
   const onKeyDown = (e) => {
     if(e.key === 'Enter') {
       e.preventDefault();
     }
   }
-
   const {
     register,
     getValues,
@@ -15,15 +15,35 @@ const FormInput = ({id, label, horizontal = false, labelSize = 2, useForm, ...pr
     watch
   } = useForm;
 
+  const [validate, setValidate] = useState(false);
+
+  const chkNumber = (e) => {
+    const regex = /[^0-9]/g;
+    if(regex.test(e.target.value)) {
+      setValidate(true);
+      setTimeout(() => {
+        setValidate(false);
+      }, 2000)
+    }
+    const res = e.target.value.replace(regex,'');
+    setValue(id, res);
+  }
+
   const formProps = {
     ...register(id),
-    onKeyDown : onKeyDown,
     ...props,
+    onKeyDown : onKeyDown,
+    onChange: chkNumber,
+    isInvalid:validate,
   }
+
   const formControl = () => {
     return (
       <>
         <FormControl {...formProps} />
+        <FormControl.Feedback type="invalid">
+          숫자만 입력 할 수 있습니다.
+        </FormControl.Feedback>
       </>
     )
   }
@@ -54,4 +74,4 @@ const FormInput = ({id, label, horizontal = false, labelSize = 2, useForm, ...pr
   )
 };
 
-export default FormInput;
+export default FormInputNumber;

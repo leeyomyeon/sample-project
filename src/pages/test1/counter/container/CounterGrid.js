@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, getState } from '../state';
 import { Form, Button, Table } from 'react-bootstrap';
-import FormInput from 'pages/components/FormInput';
+import FormInputNumber from 'pages/components/FormInputNumber';
 import { useForm } from 'react-hook-form';
 
 const initialValues = {
@@ -11,45 +11,29 @@ const initialValues = {
 const CounterGrid = () => {
   const dispatch = useDispatch();
   const [fieldNum, setFieldNum] = useState(1);
-  const {
-    register,
-    getValues,
-    setValue,
-    watch
-  } = useForm({
+
+  const form = useForm({
     mode: "onTouched",
     reValidateMode: "onChange",
     defaultValues: initialValues
-  })
-  const [validate, setValidate] = useState(false);
+  });
 
   useEffect(() => {
-    const subscription = watch((value, { name, type }) => {
-      console.log(">>", value, name, type);
+    // 콘솔에 출력
+    const subscription = form.watch((value, { name, type }) => {
+      setFieldNum(value.addNum);
     })
     return () => subscription.unsubscribe();
-  }, [watch]);
+  }, [form.watch]);
+
 
   const number = useSelector((state) => getState(state).number);
   
   const inc = () => {
-    dispatch(actions.increase({ data : Number(getValues().addNum) }));
+    dispatch(actions.increase({ data : Number(form.getValues('addNum')) }));
   }
   const dec = () => {
-    dispatch(actions.decrease({ data : Number(getValues().addNum) }));
-  }
-  
-  const onChange = (e) => {
-    const regex = /[^0-9]/g;
-    if(regex.test(e.target.value)) {
-      setValidate(true);
-      setTimeout(() => {
-        setValidate(false);
-      }, 2000)
-    }
-    const res = e.target.value.replace(regex,'');
-    setFieldNum(res);
-    setValue('addNum', res);
+    dispatch(actions.decrease({ data : Number(form.getValues('addNum')) }));
   }
 
   return (
@@ -63,13 +47,11 @@ const CounterGrid = () => {
           </tr>
           <tr style={{ height: '80px'}}>
             <td colSpan={2}>
-              <FormInput
+              <FormInputNumber
                 id="addNum"
                 label="값 입력"
-                register={register}
                 horizontal={true}
-                onChange={onChange}
-                isInvalid={validate}
+                useForm={form}
               />
             </td>
           </tr>

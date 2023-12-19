@@ -9,35 +9,31 @@ import FormModal from 'pages/components/FormModal';
 
 const CounterApiGrid = () => {
   const dispatch = useDispatch();
-  const {
-    register,
-    getValues,
-    setValue,
-    watch
-  } = useForm({
+  
+  const form = useForm({
     mode: "onTouched",
-    reValidateMode: "onSubmit",
-    defaultValues: ''
-  })
+    reValidateMode: "onChange",
+  });
+
   const [modalVisible, setModalVisible] = useState(false);
   const onSubmit = () => {
-    const apiKey = getValues().apiKey
+    const apiKey = form.getValues('apiKey')
     dispatch(actions.getList(apiKey));
   }
 
   useEffect(() => {
     // 콘솔에 출력
-    const subscription = watch((value, { name, type }) => {
+    const subscription = form.watch((value, { name, type }) => {
       console.log(">>", value, name, type);
     })
     return () => subscription.unsubscribe();
-  }, [watch]);
+  }, [form.watch]);
 
   const onButtonClick = () => {
     setModalVisible(!modalVisible);
   }
   const callBackModal = (value) => {
-    setValue('apiKey', value);
+    form.setValue('apiKey', value);
     setModalVisible(false);
   }
   const onClose = () => {
@@ -54,7 +50,7 @@ const CounterApiGrid = () => {
               id="apiKey"
               horizontal={true}
               labelSize={1}
-              register={register}
+              useForm={form}
             />
           </Form>
         </div>
