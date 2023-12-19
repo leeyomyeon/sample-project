@@ -7,6 +7,22 @@ const FormInput = ({id, label, register, horizontal = false, labelSize = 2, ...p
       e.preventDefault();
     }
   }
+
+  const formProps = {
+    ...register(id),
+    onKeyDown : onKeyDown,
+    ...props,
+  }
+  const formControl = () => {
+    return (
+      <>
+        <FormControl {...formProps} />
+        <FormControl.Feedback type="invalid">
+          숫자만 입력 할 수 있습니다.
+        </FormControl.Feedback>
+      </>
+    )
+  }
   return (
     <>
     {/* 
@@ -17,23 +33,17 @@ const FormInput = ({id, label, register, horizontal = false, labelSize = 2, ...p
     {
       horizontal ? (
         <FormGroup controlId={`formInput${id}`} as={Row} >
-          <FormLabel column sm={labelSize}>
-            {label /* 제목 */}
-          </FormLabel>
+          <FormLabel column sm={labelSize}>{label}</FormLabel>
           <Col>
-            <FormControl {...register(id)} onKeyDown={onKeyDown} {...props} />
-              <FormControl.Feedback type="invalid">
-                숫자만 입력 할 수 있습니다.
-              </FormControl.Feedback>
+            {formControl()}
           </Col>
         </FormGroup>
       ) : (
         <FormGroup controlId={`formInput${id}`}>
           <FormLabel>{label}</FormLabel>
-          <FormControl {...register(id)} onKeyDown={onKeyDown} {...props} />
-          <FormControl.Feedback type="invalid">
-            숫자만 입력 할 수 있습니다.
-          </FormControl.Feedback>
+          <Col>
+            {formControl()}
+          </Col>
         </FormGroup>
       )}            
   </>
